@@ -10,7 +10,7 @@ const Landing = () => {
 
     return(
 
-        <>
+        <React.Fragment>
         <div className="container">
 
             <div className="column">
@@ -29,9 +29,8 @@ const Landing = () => {
         <div className="iphone-specification-container">
             <IphoneSpecification></IphoneSpecification>
         </div>
+        </React.Fragment>
 
-
-        </>
 
         
 

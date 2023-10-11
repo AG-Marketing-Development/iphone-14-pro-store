@@ -5,7 +5,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
+    padding-bottom: 2rem;
 }
 
 footer p {
@@ -26,6 +26,6 @@ footer p {
     
 }
 
-.link-conditions-container{
+/* .link-conditions-container{
  
-}
+} */

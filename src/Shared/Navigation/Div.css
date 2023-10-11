@@ -1,8 +1,43 @@
 .First h1 {
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.5rem;
     color: white;
+    padding: 1rem;
+    font-weight: 500;
+    line-height: 26px;
 }
 
 .First {
     background-color: #0071dc;
+}
+
+.Second{
+    background-color: white;
+    border: 2px solid red;
+    padding: .1em;
+}
+
+.Second h2{
+    margin-left: 1em;
+    border: 3px solid green;
+    color : #000000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 500;
+    font-size: 1rem;
+    padding: .2em;
+}
+
+
+.Third{
+    background-color: #004b92;
+    padding: .3em;
+}
+
+.Third h3{
+    margin-left: 1em;
+    color : white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 600;
+    line-height: 30px;
+    font-size: 1rem;
 }

@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    margin: 3px;
+    padding: 3px;
+  }
+  
+  .column {
+    border: 2px solid blue;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #000;
+    min-width: 0; 
+    text-align: center; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+  }
+
+  .iphone-specification-container{
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }

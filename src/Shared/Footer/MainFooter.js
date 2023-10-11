@@ -1,12 +1,13 @@
 import React from "react";
 
 import './MainFooter.css';
+import LinksToModals from "./LinksToModals";
 
 const MainFooter = () => {
 
     return(
 
-        <h1>This is main Footer</h1>
+        <LinksToModals />
 
     );
 };

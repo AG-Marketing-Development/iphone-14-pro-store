@@ -1,10 +1,12 @@
 import React from "react";
 
+import Div from "../../Shared/Navigation/Div";
+
 const Landing = () => {
 
     return(
 
-        <h1>This is Landing Page</h1>
+        null
 
     );
 };

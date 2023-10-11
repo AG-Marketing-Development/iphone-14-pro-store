@@ -1,0 +1,126 @@
+.modal {
+    z-index: 100;
+    position: fixed;
+    top: 10vh;
+    left: 10%;
+    width: 80%;
+    height: 80vh;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    font-family: Arial, sans-serif;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: #2a006e;
+    color: white;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.modal__header .cancel-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-family: Arial, sans-serif;
+    background-color: #ff4b4b;
+    color: white;
+    border: none;
+    border-radius: 50%; 
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 18px;
+}
+
+.modal__header .cancel-button:hover {
+    background-color: white;
+    color: #ff4b4b;
+}
+
+.modal__header h2 {
+    margin: 0.5rem;
+}
+
+.modal__content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    overflow-y: auto;
+    flex-grow: 1;
+    max-height: calc(80vh - 3rem); /* Header height and some margin */
+}
+
+.modal__footer {
+    padding: 1rem 0.5rem;
+}
+
+/* Scrollbar styling for webkit browsers */
+.modal__content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal__content::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+}
+
+.modal__content::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .modal {
+        left: 5%;
+        width: 90%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 767px) {
+    .modal {
+        left: 10%;
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .modal {
+        left: 15%;
+        width: 70%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .modal {
+        left: calc(50% - 28rem);
+        width: 60rem;
+    }
+}
+
+.modal-enter {
+    transform: translateY(-10rem);
+    opacity: 0;
+}
+
+.modal-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 200ms;
+}
+
+.modal-exit {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-exit-active {
+    transform: translateY(-10rem);
+    opacity: 0;
+    transition: all 200ms;
+}

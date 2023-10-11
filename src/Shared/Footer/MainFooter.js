@@ -1,12 +1,14 @@
 import React from "react";
 
 import './MainFooter.css';
+import LinksToModals from "./LinksToModals";
 
 const MainFooter = () => {
 
     return(
 
-        <>
+modal-creation
+        <div>
             <footer style={{height : "30vh"}}>
                 <div className="participate-container">
                     <p>
@@ -20,13 +22,10 @@ const MainFooter = () => {
                     </p>
                 </div>
                 <div className="link-conditions-container">
-                    <p>
-                        THE LINSK FORT TERMS AND CONDITIONS
-                    </p>
+                    <LinksToModals />
                 </div>
             </footer>
-        </>
-
+        <div />
     );
 };
 

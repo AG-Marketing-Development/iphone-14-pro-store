@@ -8,7 +8,7 @@ const IphoneSpecification = () => {
     return(
 
         <>
-        <div>
+        <div className="global-description-container">
             <h1 className="brand-title">The New Iphone 14 Pro</h1>
             <p className="specification-text">
             It's a magical piece of tech 4. It's so fast most devices can't catch up. It has the newly developed cameras that can
@@ -16,7 +16,7 @@ const IphoneSpecification = () => {
             </p>
         </div>
         <div className="iphone-img-container" >
-        <img src={iphone} alt="iphone-14-pro-2" />
+        <img className="iphone-img" src={iphone} alt="iphone-14-pro-2" />
         </div>
         <div className="winner-description-text">
             <p>

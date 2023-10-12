@@ -19,9 +19,12 @@ const IphoneDescriptionContainer = () => {
                 </ul>
             </div>
             <hr/>
-            <div style={{border: "2px solid blue", textAlign : "left", marginTop : "1.3em"}}>
-                {/* <span style={{color : "rgb(177, 39, 4)", fontSize : "1.87rem", fontWeight : "500"}} className="stock-description"><span style={{fontSize : "2rem", color : "rgb(177, 39, 4)"}}>&#10071;</span> 3 in stock</span> */}
-                <span style={{color : "rgb(177, 39, 4)", fontSize : "1.87rem", fontWeight : "500"}} className="stock-description">&#10071;3 in stock</span> 
+            {/* border: "2px solid blue", */}
+            <div style={{ textAlign : "left", marginTop : "1.3em", paddingTop : ".3em", paddingBottom : "1.2em"}}>
+                <span style={{color : "rgb(177, 39, 4)",
+                             fontSize : "1.87rem",
+                             fontWeight : "500"}} 
+                      className="stock-description"><span className="exclamation-mark">!</span> 3 in stock</span> 
             </div>
             <hr/>
             <div style={{marginLeft : "20px", marginTop : "1.5em"}}>

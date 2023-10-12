@@ -8,7 +8,7 @@ const MainFooter = () => {
     return(
         <React.Fragment>
             <div>
-                <footer style={{height : "30vh"}}>
+                <footer>
                     <div className="participate-container">
                         <p>
                         Participate before it's too late!

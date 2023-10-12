@@ -8,7 +8,7 @@ const IphoneDescriptionContainer = () => {
 
         <div>
             <h1 style={{textAlign: "left"}} className="header-title">iPhone 14 Pro</h1>
-            <p style={{textAlign: "left"}} className="description">Get a chance to win the new iPhone 14 Pro, Included in the Gaming App <br/>trial</p>
+            <p style={{textAlign: "left"}} className="description">Get a chance to win the new iPhone 14 Pro, Included in the  <br/> Gaming App trial</p>
             <div className="star-container">
                 <ul className="star-style">
                     <li>&#11088;</li>

@@ -1,5 +1,6 @@
 import React from "react";
 
+import Timer from '../../utils/Timer/Timer'
 import './Div.css';
 
 const Div = props => {
@@ -31,11 +32,10 @@ const Div = props => {
 
             <div className='Third'>
 
-                <h3>
-
-                    {props.h3}
-
+                <h3 style={{display: "flex", flexDirection: "row"}}>
+                    {props.h3 } <Timer></Timer>
                 </h3>
+                
 
             </div>
 

@@ -1,0 +1,28 @@
+.form-control {
+    width: 100%;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-control input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-control p {
+    color: red;
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.form-control--invalid input{
+    border-color: red;
+}
+
+.form-control--invalid p {
+    visibility: visible;
+}

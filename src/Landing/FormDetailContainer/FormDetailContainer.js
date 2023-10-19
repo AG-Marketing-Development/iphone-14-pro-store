@@ -2,10 +2,12 @@ import React from "react";
 import Input from "../../utils/FormElements/Input";
 import { VALIDATOR_EMAIL, VALIDATOR_PHONE } from "../../utils/Validator/Validator"; 
 import { useForm } from '../../utils/hooks/form-hook';
+import { useHistory } from 'react-router-dom'; 
 import './FormDetailContainer.css';
 import Image1 from "../../utils/assets/mcafeeSecure.png";
 import Image2 from "../../utils/assets/truste.png";
 import Image3 from "../../utils/assets/veriSign.png";
+
 
 const FormDetailContainer = () => {
     const [formState, inputHandler] = useForm(
@@ -22,10 +24,14 @@ const FormDetailContainer = () => {
         false
     );
 
+    const history = useHistory();
+
     const submitHandler = (e) => {
         e.preventDefault();
         if (formState.isValid) {
             console.log('Submitted', formState.inputs);
+            history.push('/checkout');
+            
         } else {
             console.log('Form is not valid');
         }
@@ -38,7 +44,7 @@ const FormDetailContainer = () => {
                 <hr />
             </div>
             
-            <form className="form" onSubmit={submitHandler}>
+            <form className="form" action='/checkout'>
                 <div className="name-container">
                     <input type="text" placeholder="First Name" required />
                     <input type="text" placeholder="Last Name" required />
@@ -62,7 +68,7 @@ const FormDetailContainer = () => {
                     onInput={inputHandler}
                 />
                 
-                <button type="submit" disabled={!formState.isValid}>Submit</button>
+                <button type="submit">Sudbmit</button>
             </form>
             
             <div className="image-container">

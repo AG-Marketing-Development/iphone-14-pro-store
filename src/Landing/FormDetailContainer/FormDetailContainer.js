@@ -7,7 +7,7 @@ import './FormDetailContainer.css';
 import Image1 from "../../utils/assets/mcafeeSecure.png";
 import Image2 from "../../utils/assets/truste.png";
 import Image3 from "../../utils/assets/veriSign.png";
-
+import { useState } from "react";
 
 const FormDetailContainer = () => {
     const [formState, inputHandler] = useForm(
@@ -25,13 +25,24 @@ const FormDetailContainer = () => {
     );
 
     const history = useHistory();
+    const [inputValues, setInputValues] = useState({
+        fname: '', 
+        lname: '',
+        email: '',
+        phone: '',
+      });
+      
+      const handleOnChange = (e) => {
+    
+      let { name, value } = e.target;
+        setInputValues({ ...inputValues, [name]: value });
+      };
 
-    const submitHandler = (e) => {
+      const submitHandler = (e) => {
         e.preventDefault();
         if (formState.isValid) {
-            console.log('Submitted', formState.inputs);
-            history.push('/checkout');
-            
+            const string = `${inputValues.fname}&${inputValues.lname}&${inputValues.email}&${inputValues.phone}`;
+            history.push(`/checkout/${string}`);                
         } else {
             console.log('Form is not valid');
         }
@@ -43,35 +54,34 @@ const FormDetailContainer = () => {
                 <h1>Fill Out Your Details:</h1>
                 <hr />
             </div>
-            
-            <form className="form" action='/checkout'>
+             <form className="form" onSubmit={submitHandler}>
                 <div className="name-container">
-                    <input type="text" placeholder="First Name" required />
-                    <input type="text" placeholder="Last Name" required />
-                </div>
-                
+                    <input id='fname' name='fname' value={inputValues.fname} onChange={handleOnChange} type="text" placeholder="First Name" required />
+                    <input id='lname'  name='lname'   onChange={handleOnChange} type="text" placeholder="Last Name" required />
+                </div>                
                 <Input 
                     id="email"
                     type="email"
+                    name="email"
                     placeholder="Email Address"
                     validators={[VALIDATOR_EMAIL()]}
                     errorText="Please enter a valid email."
                     onInput={inputHandler}
-                />
-                
+                    handleOnChange={handleOnChange}
+                />  
                 <Input 
                     id="phone"
                     type="tel"
+                    name="phone"
                     placeholder="Phone Number"
                     validators={[VALIDATOR_PHONE()]}
                     errorText="Please enter a valid US phone number."
                     onInput={inputHandler}
-                />
-                
+                    handleOnChange={handleOnChange}
+                />              
                 <button type="submit">Sudbmit</button>
             </form>
-            
-            <div className="image-container">
+                <div className="image-container">
                 <img src={Image1} alt="Error Image1" />
                 <img src={Image2} alt="Error Image2" />
                 <img src={Image3} alt="Error Image3" />

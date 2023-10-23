@@ -86,36 +86,40 @@ const handleChange = (e) => {
     <form className="form-containerd" onSubmit={handleSubmit}>
       <label>
         Credit Card Number:
-        <input type="text" name='cardNumber' value={formData.cardNumber} onChange={(e) => handleChange(e)} />
+        <input type="text" placeholder='xxxxxxxxxxxxx'name='cardNumber' value={formData.cardNumber} onChange={(e) => handleChange(e)} />
       </label>
       <div className="form-double-column">
       <label>
         Month:
-        <input type="text" name='expiryMonth' value={formData.expiryMonth} onChange={(e) => handleChange(e)} />
+        <input type="text" placeholder='MM' name='expiryMonth' value={formData.expiryMonth} onChange={(e) => handleChange(e)} />
       </label>
       <label>
         Year:
-        <input type="text" name='expiryYear' value={formData.expiryYear} onChange={(e) => handleChange(e)} />
+        <input type="text" placeholder='YYYY' name='expiryYear' value={formData.expiryYear} onChange={(e) => handleChange(e)} />
       </label>
       </div>
       <label>
         CVV:
-        <input type="text" name='cvv' value={formData.cvv} onChange={(e) => handleChange(e)} />
+        <input type="text" PLACEHOLDER='XXX' name='cvv' value={formData.cvv} onChange={(e) => handleChange(e)} />
       </label>
       <label>
         Address 1:
-        <input type="text" name='Address1' value={formData.Address1} onChange={(e) => handleChange(e)} />
+        <input type="text" placeholder='Address 1' name='Address1' value={formData.Address1} onChange={(e) => handleChange(e)} />
       </label>
       <label>
         Address 2:
-        <input type="text" name='Address2' value={formData.Address2} onChange={(e) => handleChange(e)} />
+        <input type="text" placeholder='Address 2' name='Address2' value={formData.Address2} onChange={(e) => handleChange(e)} />
       </label>
       <label>
         City:
         <input type="text" name='city' value={formData.city} onChange={(e) => handleChange(e)} />
       </label>
+      <div className='form-double-column'>
       <label>
-        State:
+        State:</label>
+   
+        </div>
+        <div className="form-double-column">
         <select name='State' value={formData.State} onChange={(e) => handleChange(e)} >
                   {states.map((states) => (
                     <option key={states.value} value={states.value}>
@@ -124,12 +128,14 @@ const handleChange = (e) => {
                   ))}
                 </select>
 
-      </label>
-      <label>
+      
+                <label>
         Zip Code:
+        </label>
         <input type="text" name='zipCode' value={formData.zipCode} onChange={handleChange} />
-      </label>
-      <button type="submit">Confirm</button>
+      
+      </div>
+      <button className="continue-button"type="submit">SUBMIT</button>
     </form>
  );
 };

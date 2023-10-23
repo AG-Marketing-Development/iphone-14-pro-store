@@ -43,8 +43,8 @@ const Input = props => {
         });
     };
 
-    const changeHanlder = event => {
-        let value = event.target.value;
+    const changeHandler = (e) => {
+        let value = e.target.value;
         if (props.type === "tel") {
             value = value.replace(/[^\d]/g, '');  // Remove any non-digit characters
         }
@@ -54,15 +54,20 @@ const Input = props => {
             val: value, 
             validators: props.validators
         });
+
+        props.handleOnChange(e);
+
+
     };
 
     const element = 
     <input 
         id={props.id} 
         type={props.type}
+        name={props.name}
         pattern={props.type === "tel" ? "\\d*" : undefined} 
         placeholder={props.placeholder} 
-        onChange={changeHanlder}
+        onChange={changeHandler}
         onBlur={touchHandler}
         value={inputState.value}
     />;

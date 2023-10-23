@@ -22,7 +22,7 @@ const App = () => {
                 <Route path='/' exact>
                     <Landing/>
                 </Route>
-                <Route path='/checkout' exact>
+                <Route path='/checkout/:string' exact>
                    <CreditCardForm/>
                 </Route>
 

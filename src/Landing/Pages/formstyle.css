@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
 .form-containerd {
     width: 20%;
     margin: 0 auto;
@@ -5,7 +7,15 @@
     padding-bottom: 1%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
-
+.results{
+    width: 80%;
+    min-height: 20rem;
+    margin: 0 auto;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    padding-top: 9%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
 .form-double-column{
     display: flex;
 }

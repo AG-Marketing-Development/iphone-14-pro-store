@@ -4,7 +4,12 @@ import './formstyle.css';
 import states from '../../utils/states'
 import LoadingSimple from '../Loading/loading'
 
-const CreditCardForm = () => {
+const CreditCardForm = params => {
+
+const affiliateID = localStorage.getItem('affiliateID');
+const subAffiliateID = localStorage.getItem('subAffiliateID');
+
+
 const [results,setResults] = useState(false);
 const [messageResult,setMessageResult] = useState("No Results");
 const [loading,setLoading] = useState(false);
@@ -100,7 +105,7 @@ const handleChange = (e) => {
       </div>
       <label>
         CVV:
-        <input type="text" PLACEHOLDER='XXX' name='cvv' value={formData.cvv} onChange={(e) => handleChange(e)} />
+        <input type="text" placeholder='XXX' name='cvv' value={formData.cvv} onChange={(e) => handleChange(e)} />
       </label>
       <label>
         Address 1:

@@ -8,6 +8,15 @@ import './Landing.css'
 
 const Landing = () => {
 
+    const url = new URL(window.location.href);
+    const initialParams = url.searchParams;
+    const affId = initialParams.get('AffiliateID');
+    const subaffId = initialParams.get('SubAffiliateID');
+    const transactionId = initialParams.get('Transaction_ID');
+    localStorage['affiliateID'] = affId; 
+    localStorage['subAffiliateID'] = subaffId;
+    localStorage['transactionID'] = transactionId;
+
     return(
 
         <React.Fragment>

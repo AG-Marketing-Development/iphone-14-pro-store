@@ -9,10 +9,10 @@ const IphoneSpecification = () => {
 
         <>
         <div className="global-description-container">
-            <h1 className="brand-title">The New Iphone 14 Pro</h1>
+            <h1 className="brand-title">The New Iphone 15 Pro</h1>
             <p className="specification-text">
             It's a magical piece of tech 4. It's so fast most devices can't catch up. It has the newly developed cameras that can
-            transform reality. it's the <br/> new Iphone 14 Pro.
+            transform reality. it's the <br/> new Iphone 15 Pro.
             </p>
         </div>
         <div className="iphone-img-container" >
@@ -20,7 +20,7 @@ const IphoneSpecification = () => {
         </div>
         <div className="winner-description-text">
             <p>
-            A winner be selected from all eligible entrants. The iPhone 14 Pro winner will be directly contacted by email.
+            A winner be selected from all eligible entrants. The iPhone 15 Pro winner will be directly contacted by email.
             </p>
         </div> 
         </>

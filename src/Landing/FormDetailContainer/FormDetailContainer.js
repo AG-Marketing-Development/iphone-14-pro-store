@@ -63,7 +63,7 @@ const FormDetailContainer = () => {
                 </div>                
                 <Input 
                     id="email"
-                    type="email"
+                    type="text"
                     name="email"
                     placeholder="Email Address"
                     validators={[VALIDATOR_EMAIL()]}

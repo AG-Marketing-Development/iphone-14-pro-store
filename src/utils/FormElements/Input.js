@@ -45,7 +45,7 @@ const Input = props => {
 
     const changeHandler = (e) => {
         let value = e.target.value;
-        if (props.type === "tel") {
+        if (props.type === "text") {
             value = value.replace(/[^\d]/g, '');  // Remove any non-digit characters
         }
     

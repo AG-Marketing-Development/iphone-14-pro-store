@@ -6,6 +6,7 @@ const VALIDATOR_TYPE_MAX = 'MAX';
 const VALIDATOR_TYPE_EMAIL = 'EMAIL';
 const VALIDATOR_TYPE_FILE = 'FILE';
 const VALIDATOR_TYPE_PHONE = 'PHONE';
+const VALIDATOR_TYPE_NUMBERONLY = 'NUMBERONLY';  // New validator type
 
 export const VALIDATOR_REQUIRE = () => ({ type: VALIDATOR_TYPE_REQUIRE });
 export const VALIDATOR_FILE = () => ({ type: VALIDATOR_TYPE_FILE });
@@ -21,6 +22,7 @@ export const VALIDATOR_MIN = val => ({ type: VALIDATOR_TYPE_MIN, val: val });
 export const VALIDATOR_MAX = val => ({ type: VALIDATOR_TYPE_MAX, val: val });
 export const VALIDATOR_EMAIL = () => ({ type: VALIDATOR_TYPE_EMAIL });
 export const VALIDATOR_PHONE = () => ({ type: VALIDATOR_TYPE_PHONE });
+export const VALIDATOR_NUMBERONLY = () => ({ type: VALIDATOR_TYPE_NUMBERONLY });  // New function for the validator
 
 export const validate = (value, validators) => {
   let isValid = true;
@@ -45,6 +47,9 @@ export const validate = (value, validators) => {
     }
     if (validator.type === VALIDATOR_TYPE_PHONE) {
         isValid = isValid && /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(value);
+    }
+    if (validator.type === VALIDATOR_TYPE_NUMBERONLY) {
+        isValid = isValid && /^[0-9]+$/.test(value);  // Validation for numbers only
     }
   }
   return isValid;

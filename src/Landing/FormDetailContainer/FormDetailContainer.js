@@ -1,6 +1,7 @@
 import React from "react";
+
 import Input from "../../utils/FormElements/Input";
-import { VALIDATOR_EMAIL, VALIDATOR_PHONE } from "../../utils/Validator/Validator"; 
+import { VALIDATOR_EMAIL, VALIDATOR_PHONE, VALIDATOR_NUMBERONLY } from "../../utils/Validator/Validator"; 
 import { useForm } from '../../utils/hooks/form-hook';
 import { useHistory } from 'react-router-dom'; 
 import './FormDetailContainer.css';
@@ -8,6 +9,7 @@ import Image1 from "../../utils/assets/mcafeeSecure.png";
 import Image2 from "../../utils/assets/truste.png";
 import Image3 from "../../utils/assets/veriSign.png";
 import { useState } from "react";
+import InputPhone from "../../utils/FormElements/InputPhone";
 
 const FormDetailContainer = () => {
     const [formState, inputHandler] = useForm(
@@ -69,17 +71,14 @@ const FormDetailContainer = () => {
                     onInput={inputHandler}
                     handleOnChange={handleOnChange}
                 />  
-                <Input 
+                <InputPhone 
                     id="phone"
-                    type="tel"
                     name="phone"
-                    placeholder="Phone Number"
-                    validators={[VALIDATOR_PHONE()]}
-                    errorText="Please enter a valid US phone number."
                     onInput={inputHandler}
-                    handleOnChange={handleOnChange}
-                />              
-                <button type="submit">Sudbmit</button>
+                />
+
+                
+                <button type="submit">Submit</button>
             </form>
                 <div className="image-container">
                 <img src={Image1} alt="Error Image1" />

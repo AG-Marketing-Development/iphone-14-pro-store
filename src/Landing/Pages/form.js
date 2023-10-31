@@ -149,7 +149,7 @@ const handleChange = (e) => {
             name="cvv"
             placeholder="xxx"
             validators={[VALIDATOR_MINLENGTH(3), VALIDATOR_MAXLENGTH(3), VALIDATOR_NUMBERONLY()]}
-            errorText="Please enter a valid credit card."
+            errorText="Please enter a cvv."
             onInput={inputHandler}
             handleOnChange={handleOnChange}
         />  

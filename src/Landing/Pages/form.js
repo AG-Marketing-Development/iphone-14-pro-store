@@ -8,7 +8,6 @@ import Input from '../../utils/FormElements/Input';
 import { useForm } from '../../utils/hooks/form-hook';
 import { VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_NUMBERONLY } from '../../utils/Validator/Validator';
 
-
 const CreditCardForm = params => {
 
   const [formState, inputHandler] = useForm(
@@ -120,6 +119,7 @@ const handleChange = (e) => {
       <label>
         Credit Card Number:
         </label>
+
         <Input 
             id="cardNumber"
             type="text"
@@ -143,19 +143,18 @@ const handleChange = (e) => {
       </div>
       <label>
         CVV:
+        </label>
 
-        <Input 
-            id="cvv"
-            type="text"
-            name="cvv"
-            placeholder="xxx"
-            validators={[VALIDATOR_MINLENGTH(3), VALIDATOR_MAXLENGTH(3), VALIDATOR_NUMBERONLY()]}
-            errorText="Please enter a cvv."
-            onInput={inputHandler}
-            handleOnChange={handleOnChange}
-        />  
-
-      </label>
+<Input 
+      id="cvv"
+      type="text"
+      name="cvv"
+      placeholder="xxx"
+      validators={[VALIDATOR_MINLENGTH(3), VALIDATOR_MAXLENGTH(3), VALIDATOR_NUMBERONLY()]}
+      errorText="Please enter a cvv."
+      onInput={inputHandler}
+      handleOnChange={handleOnChange}
+  />  
       <label>
         Address 1:
         <input type="text" placeholder='Address 1' name='Address1' value={formData.Address1} onChange={(e) => handleChange(e)} />

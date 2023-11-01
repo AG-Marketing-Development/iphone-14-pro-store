@@ -173,14 +173,13 @@ const validateExpiryDate = ({ month, year }) => {
             handleOnChange={handleOnChange}
         />  
 
-      <div className="form-double-column">
+
 
         <DropDownCC 
             expiryDate={formState.inputs.expiryDate.value}
             onExpiryChange={handleExpiryChange}
         />
 
-      </div>
       <label>
         CVV:
         

@@ -26,9 +26,16 @@
     border-color: red;
   }
   
-  .form-control--invalid p {
+.form-control--invalid p {
     color: red;
     margin-top: 5px;
     font-size: 0.8rem;
   }
   
+.form-control--invalid input{
+    border-color: red;
+}
+
+.form-control--invalid p {
+    visibility: visible;
+}

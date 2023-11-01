@@ -164,7 +164,7 @@ const validateExpiryDate = ({ month, year }) => {
       
       <Input 
             id="cardNumber"
-            type="text"
+            type="tel"
             name="cardNumber"
             placeholder="xxxx xxxx xxxx xxxx"
             validators={[VALIDATOR_MINLENGTH(16), VALIDATOR_MAXLENGTH(16), VALIDATOR_NUMBERONLY()]}
@@ -187,7 +187,7 @@ const validateExpiryDate = ({ month, year }) => {
 
       <Input 
             id="cvv"
-            type="text"
+            type="tel"
             name="cvv"
             placeholder="xxx"
             validators={[VALIDATOR_MINLENGTH(3), VALIDATOR_MAXLENGTH(3), VALIDATOR_NUMBERONLY()]}

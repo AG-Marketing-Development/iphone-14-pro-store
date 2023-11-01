@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-
 import './formstyle.css';
 import states from '../../utils/states'
 import LoadingSimple from '../Loading/loading'
 import Input from '../../utils/FormElements/Input';
 import { useForm } from '../../utils/hooks/form-hook';
 import { VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_NUMBERONLY } from '../../utils/Validator/Validator';
+import DropDownCC from '../../utils/FormElements/DropDownCC';
 
-const CreditCardForm = params => {
+const CreditCardForm = () => {
+  
 
-    const [formState, inputHandler] = useForm(
-        {
-            creditCardNumber: {
-                value: '',
-                isValid: false
-            }
-        }, 
-        false
-    );
+  const [formState, inputHandler] = useForm(
+    {
+      cardNumber: {
+        value: '',
+        isValid: false
+      },
+      cvv: {
+        value: '',
+        isValid: false
+      },
+      expiryDate: {
+        value: { month: '', year: '' },
+        isValid: false
+      }
+    }, 
+    false
+  );
 
     const [inputValues, setInputValues] = useState({
         creditCardNumber: ''
@@ -27,7 +36,12 @@ const CreditCardForm = params => {
     const handleOnChange = (e) => {
     
         let { name, value } = e.target;
-          setInputValues({ ...inputValues, [name]: value });
+        setInputValues({ ...inputValues, [name]: value });
+
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+          });
     };
 
 const affiliateID = localStorage.getItem('affiliateID');
@@ -39,8 +53,7 @@ const [messageResult,setMessageResult] = useState("No Results");
 const [loading,setLoading] = useState(false);
 const [formData, setFormData] = useState({
   cardNumber: '',
-  expiryYear: '',
-  expiryMonth: '',
+  expiryDate: { month: '', year: '' },
   cvv: '',
   Address1: '',
   Address2: '',
@@ -53,51 +66,60 @@ const { string } = useParams();
 const paramsFirstForm = string.split("&")
 
 const handleSubmit = async (e) => {
-  setLoading(true);
-  e.preventDefault();
-  var raw = "";
-  var requestOptions = {
-    method: 'POST',
-    body: raw,
-    redirect: 'follow',
-    dataType: "jsonp"
-  };
-  const adrNoSpaces = formData.Address1.replace(/\s+/g, '+');
-  const adrNoSpacesTwo = formData.Address2.replace(/\s+/g, '+');
-  const cityNoSpaces = formData.city.replace(/\s+/g, '+');
-  const apiEndPoint = "http://localhost/api.php?"
-  const apiParams = `fname=${encodeURIComponent(paramsFirstForm[0])}` +
-    `&lname=${encodeURIComponent(paramsFirstForm[1])}` +
-    `&phone=${encodeURIComponent(paramsFirstForm[3])}` +
-    `&email=${encodeURIComponent(paramsFirstForm[2])}` +
-    `&card=${encodeURIComponent(formData.cardNumber)}` +
-    `&month=${encodeURIComponent(formData.expiryMonth)}` +
-    `&year=${encodeURIComponent(formData.expiryYear)}` +
-    `&CVV=${encodeURIComponent(formData.cvv)}` +
-    `&adr1=${encodeURIComponent(adrNoSpaces)}` +
-    `&adr2=${encodeURIComponent(adrNoSpacesTwo)}` +
-    `&city=${encodeURIComponent(cityNoSpaces)}` +
-    `&postal=${encodeURIComponent(formData.zipCode)}` +
-    `&state=${encodeURIComponent(formData.State)}` +
-    `&country=US` +
-    `&campaign=1` +
-    `&product=1` +
-    `&qty=1`
+    setLoading(true);
+    e.preventDefault();
 
-  const apiURL = apiEndPoint + apiParams
-  console.log(apiURL);
-  await fetch(apiURL, requestOptions)
-    .then(response => response.text())
-    .then(result => JSON.parse(result))
-    .then(raw => {setLoading(false);
-    if(raw.result === "Success") {
-     setMessageResult("Your purchase was successful");
+    if (formState.isValid) {
+        var raw = "";
+    var requestOptions = {
+        method: 'POST',
+        body: raw,
+        redirect: 'follow',
+        dataType: "jsonp"
+    };
+    
+    const adrNoSpaces = formData.Address1.replace(/\s+/g, '+');
+    const adrNoSpacesTwo = formData.Address2.replace(/\s+/g, '+');
+    const cityNoSpaces = formData.city.replace(/\s+/g, '+');
+    const apiEndPoint = "http://localhost/api.php?"
+    const apiParams = `fname=${encodeURIComponent(paramsFirstForm[0])}` +
+        `&lname=${encodeURIComponent(paramsFirstForm[1])}` +
+        `&phone=${encodeURIComponent(paramsFirstForm[3])}` +
+        `&email=${encodeURIComponent(paramsFirstForm[2])}` +
+        `&card=${encodeURIComponent(formData.cardNumber)}` +
+        `&month=${encodeURIComponent(formData.expiryDate.month)}` +
+        `&year=${encodeURIComponent(formData.expiryDate.year)}` +
+        `&CVV=${encodeURIComponent(formData.cvv)}` +
+        `&adr1=${encodeURIComponent(adrNoSpaces)}` +
+        `&adr2=${encodeURIComponent(adrNoSpacesTwo)}` +
+        `&city=${encodeURIComponent(cityNoSpaces)}` +
+        `&postal=${encodeURIComponent(formData.zipCode)}` +
+        `&state=${encodeURIComponent(formData.State)}` +
+        `&country=US` +
+        `&campaign=1` +
+        `&product=1` +
+        `&qty=1`
+
+    const apiURL = apiEndPoint + apiParams
+    console.log(apiURL);
+    await fetch(apiURL, requestOptions)
+        .then(response => response.text())
+        .then(result => JSON.parse(result))
+        .then(raw => {setLoading(false);
+        if(raw.result === "Success") {
+        setMessageResult("Your purchase was successful");
+        } else {
+        setMessageResult("Your purchase was not successful");
+        }
+        setResults(true);}
+        )
+        .catch(error => console.log('error', error));
     } else {
-     setMessageResult("Your purchase was not successful");
+        console.log('Form is not valid'); // This need to be modfied
     }
-    setResults(true);}
-    )
-    .catch(error => console.log('error', error));
+
+
+    
 };
 
 const handleChange = (e) => {
@@ -107,6 +129,26 @@ const handleChange = (e) => {
   });
 
 };
+
+
+const handleExpiryChange = (expiryDate) => {
+    
+    inputHandler('expiryDate', expiryDate, validateExpiryDate(expiryDate));
+  };
+
+const validateExpiryDate = ({ month, year }) => {
+    const expiryMonth = parseInt(month, 10);
+    const expiryYear = parseInt(year, 10);
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth() + 1;
+
+    return (
+        expiryYear > currentYear ||
+        (expiryYear === currentYear && expiryMonth >= currentMonth)
+    );
+};
+
+
  return (
   loading ? <LoadingSimple></LoadingSimple> : 
   results ? <div className="results"><h1>{messageResult}</h1>
@@ -129,14 +171,12 @@ const handleChange = (e) => {
         />  
 
       <div className="form-double-column">
-      <label>
-        Month:
-        <input type="text" placeholder='MM' name='expiryMonth' value={formData.expiryMonth} onChange={(e) => handleChange(e)} />
-      </label>
-      <label>
-        Year:
-        <input type="text" placeholder='YYYY' name='expiryYear' value={formData.expiryYear} onChange={(e) => handleChange(e)} />
-      </label>
+
+        <DropDownCC 
+            expiryDate={formState.inputs.expiryDate.value}
+            onExpiryChange={handleExpiryChange}
+        />
+        
       </div>
       <label>
         CVV:

@@ -38,7 +38,7 @@ const InputPhone = (props) => {
         <Input 
             {...props}
             value={displayedValue}
-            type="text"
+            type="tel"
             placeholder="(xxx) xxx-xxxx"
             validators={[VALIDATOR_PHONE(), VALIDATOR_NUMBERONLY()]}
             errorText="Please enter a valid US phone number."

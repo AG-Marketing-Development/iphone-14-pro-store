@@ -3,8 +3,7 @@ async function clicks(params) {
 let endpoint = '';
 
 console.log(params);
-let paramsLength = await params.length;
-console.log (params.affid);
+let paramsLength = Object.keys(params).length;;
     if (paramsLength == 3) {
          endpoint = `clicksimport.php?affiliateID=${params.affid}`+
         `&subAffiliateID=${params.subaffId}` +

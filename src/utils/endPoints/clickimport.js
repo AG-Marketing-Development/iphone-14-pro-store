@@ -7,7 +7,7 @@ if (params.length = 3) {
     `&transactionID=${paramsFirstForm[2]}`
 
 } else if(params.length = 1) {
-    let endpoint = `affiliatePass.php?affiliateID=${params[0]}`;
+    let endpoint = `clicksimport.php?affiliateID=${params[0]}`;
  } else {
     let endpoint = `notFound.php`;
     }
@@ -23,4 +23,4 @@ if (params.length = 3) {
     }
 }
 
-export { clicks };
+export default { clicks };

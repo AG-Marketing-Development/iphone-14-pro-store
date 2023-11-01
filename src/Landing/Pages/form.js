@@ -87,8 +87,8 @@ const handleSubmit = async (e) => {
             `&phone=${encodeURIComponent(paramsFirstForm[3])}` +
             `&email=${encodeURIComponent(paramsFirstForm[2])}` +
             `&card=${encodeURIComponent(formData.cardNumber)}` +
-            `&month=${encodeURIComponent(formData.expiryDate.month)}` +
-            `&year=${encodeURIComponent(formData.expiryDate.year)}` +
+            `&month=${encodeURIComponent(formState.inputs.expiryDate.value.month)}` + 
+            `&year=${encodeURIComponent(formState.inputs.expiryDate.value.year)}` +
             `&CVV=${encodeURIComponent(formData.cvv)}` +
             `&adr1=${encodeURIComponent(adrNoSpaces)}` +
             `&adr2=${encodeURIComponent(adrNoSpacesTwo)}` +
@@ -136,9 +136,9 @@ const handleChange = (e) => {
 
 
 const handleExpiryChange = (expiryDate) => {
-    
     inputHandler('expiryDate', expiryDate, validateExpiryDate(expiryDate));
   };
+  
 
 const validateExpiryDate = ({ month, year }) => {
     const expiryMonth = parseInt(month, 10);

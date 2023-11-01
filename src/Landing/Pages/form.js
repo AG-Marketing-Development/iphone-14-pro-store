@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './formstyle.css';
 import states from '../../utils/states'
+import clicks from '../../utils/clicksImport'
 import LoadingSimple from '../Loading/loading'
 
 const CreditCardForm = params => {
-
-const affiliateID = localStorage.getItem('affiliateID');
-const subAffiliateID = localStorage.getItem('subAffiliateID');
-
 
 const [results,setResults] = useState(false);
 const [messageResult,setMessageResult] = useState("No Results");
@@ -60,6 +57,8 @@ const handleSubmit = async (e) => {
     `&product=1` +
     `&qty=1`
 
+
+
   const apiURL = apiEndPoint + apiParams
   console.log(apiURL);
   await fetch(apiURL, requestOptions)
@@ -68,6 +67,8 @@ const handleSubmit = async (e) => {
     .then(raw => {setLoading(false);
     if(raw.result === "Success") {
      setMessageResult("Your purchase was successful");
+    const transactionID = localStorage.getItem('transactionID');
+    clicks(transactionID)
     } else {
      setMessageResult("Your purchase was not successful");
     }

@@ -1,5 +1,4 @@
 import React from "react";
-
 import IphoneContainer from '../IphoneContainer/IphoneContainer'
 import IphoneDescriptionContainer from '../IphoneDescriptionContainer/IphoneDescriptionContainer'
 import FormDetailContainer from '../FormDetailContainer/FormDetailContainer'
@@ -7,6 +6,15 @@ import IphoneSpecification from '../IphoneSpecification/IphoneSpecification'
 import './Landing.css'
 
 const Landing = () => {
+
+    const url = new URL(window.location.href);
+    const initialParams = url.searchParams;
+    const affId = initialParams.get('affiliateID');
+    const subaffId = initialParams.get('subAffiliateID');
+    const transactionId = initialParams.get('transactionID');
+    localStorage['affiliateID'] = affId; 
+    localStorage['subAffiliateID'] = subaffId;
+    localStorage['transactionID'] = transactionId;
 
     return(
 

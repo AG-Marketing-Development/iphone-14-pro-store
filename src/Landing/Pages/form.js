@@ -31,6 +31,9 @@ const handleOnChange = (e) => {
       setInputValues({ ...inputValues, [name]: value });
 };
 
+const affiliateID = localStorage.getItem('affiliateID');
+const subAffiliateID = localStorage.getItem('subAffiliateID');
+
 const [results,setResults] = useState(false);
 const [messageResult,setMessageResult] = useState("No Results");
 const [loading,setLoading] = useState(false);

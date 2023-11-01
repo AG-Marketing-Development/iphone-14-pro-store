@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './formstyle.css';
 import states from '../../utils/states'
-import clicks from '../../utils/endPoints/clicksImport'
+import clicks from '../../utils/endPoints/clickimport'
 import LoadingSimple from '../Loading/loading'
 import Input from '../../utils/FormElements/Input';
 import { useForm } from '../../utils/hooks/form-hook';

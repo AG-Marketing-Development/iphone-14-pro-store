@@ -4,6 +4,7 @@ import './formstyle.css';
 import states from '../../utils/states'
 import LoadingSimple from '../Loading/loading'
 import Input from '../../utils/FormElements/Input';
+import clicks from '../../utils/endPoints/clickimport';
 import { useForm } from '../../utils/hooks/form-hook';
 import { VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_NUMBERONLY } from '../../utils/Validator/Validator';
 import DropDownCC from '../../utils/FormElements/DropDownCC';

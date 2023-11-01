@@ -3,6 +3,7 @@ import IphoneContainer from '../IphoneContainer/IphoneContainer'
 import IphoneDescriptionContainer from '../IphoneDescriptionContainer/IphoneDescriptionContainer'
 import FormDetailContainer from '../FormDetailContainer/FormDetailContainer'
 import IphoneSpecification from '../IphoneSpecification/IphoneSpecification'
+import Clicks from '../../utils/clicksImport'
 import './Landing.css'
 
 const Landing = () => {
@@ -15,6 +16,11 @@ const Landing = () => {
     localStorage['affiliateID'] = affId; 
     localStorage['subAffiliateID'] = subaffId;
     localStorage['transactionID'] = transactionId;
+
+    if (localStorage.getItem('visitorunique')) {
+        Clicks(affId,subaffId,transactionId);
+      }
+    
 
     return(
 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import clicks from '../../utils/endPoints/clickimport'
 import './formstyle.css';
 import states from '../../utils/states'
 import LoadingSimple from '../Loading/loading'
@@ -45,6 +44,10 @@ const CreditCardForm = () => {
           });
     };
 
+const affiliateID = localStorage.getItem('affiliateID');
+const subAffiliateID = localStorage.getItem('subAffiliateID');
+
+
 const [results,setResults] = useState(false);
 const [messageResult,setMessageResult] = useState("No Results");
 const [loading,setLoading] = useState(false);
@@ -63,49 +66,57 @@ const { string } = useParams();
 const paramsFirstForm = string.split("&")
 
 const handleSubmit = async (e) => {
+    setLoading(true);
+    e.preventDefault();
 
-  setLoading(true);
-  e.preventDefault();
-  var raw = "";
-  var requestOptions = {
-    method: 'POST',
-    body: raw,
-    redirect: 'follow',
-    dataType: "jsonp"
-  };
-  const adrNoSpaces = formData.Address1.replace(/\s+/g, '+');
-  const adrNoSpacesTwo = formData.Address2.replace(/\s+/g, '+');
-  const cityNoSpaces = formData.city.replace(/\s+/g, '+');
-  const apiEndPoint = "http://24.144.94.20/api.php?"
-  const apiParams = `fname=${encodeURIComponent(paramsFirstForm[0])}` +
-    `&lname=${encodeURIComponent(paramsFirstForm[1])}` +
-    `&phone=${encodeURIComponent(paramsFirstForm[3])}` +
-    `&email=${encodeURIComponent(paramsFirstForm[2])}` +
-    `&card=${encodeURIComponent(formData.cardNumber)}` +
-    `&month=${encodeURIComponent(formData.expiryMonth)}` +
-    `&year=${encodeURIComponent(formData.expiryYear)}` +
-    `&CVV=${encodeURIComponent(formData.cvv)}` +
-    `&adr1=${encodeURIComponent(adrNoSpaces)}` +
-    `&adr2=${encodeURIComponent(adrNoSpacesTwo)}` +
-    `&city=${encodeURIComponent(cityNoSpaces)}` +
-    `&postal=${encodeURIComponent(formData.zipCode)}` +
-    `&state=${encodeURIComponent(formData.State)}` +
-    `&country=US` +
-    `&campaign=1` +
-    `&product=1` +
-    `&qty=1`
 
-  const apiURL = apiEndPoint + apiParams
-  console.log(apiURL);
-  await fetch(apiURL, requestOptions)
-    .then(response => response.text())
-    .then(result => JSON.parse(result))
-    .then(raw => {setLoading(false);
-    if(raw.result === "Success") {
-     setMessageResult("Your purchase was successful");
-     const transactionID = localStorage.getItem('transactionID');
-     clicks(transactionID)
+    if (formState.isValid) {
+        var raw = "";
+    var requestOptions = {
+        method: 'POST',
+        body: raw,
+        redirect: 'follow',
+        dataType: "jsonp"
+    };
+    
+    const adrNoSpaces = formData.Address1.replace(/\s+/g, '+');
+    const adrNoSpacesTwo = formData.Address2.replace(/\s+/g, '+');
+    const cityNoSpaces = formData.city.replace(/\s+/g, '+');
+    const apiEndPoint = "http://localhost/api.php?"
+    const apiParams = `fname=${encodeURIComponent(paramsFirstForm[0])}` +
+        `&lname=${encodeURIComponent(paramsFirstForm[1])}` +
+        `&phone=${encodeURIComponent(paramsFirstForm[3])}` +
+        `&email=${encodeURIComponent(paramsFirstForm[2])}` +
+        `&card=${encodeURIComponent(formData.cardNumber)}` +
+        `&month=${encodeURIComponent(formData.expiryDate.month)}` +
+        `&year=${encodeURIComponent(formData.expiryDate.year)}` +
+        `&CVV=${encodeURIComponent(formData.cvv)}` +
+        `&adr1=${encodeURIComponent(adrNoSpaces)}` +
+        `&adr2=${encodeURIComponent(adrNoSpacesTwo)}` +
+        `&city=${encodeURIComponent(cityNoSpaces)}` +
+        `&postal=${encodeURIComponent(formData.zipCode)}` +
+        `&state=${encodeURIComponent(formData.State)}` +
+        `&country=US` +
+        `&campaign=1` +
+        `&product=1` +
+        `&qty=1`
 
+    const apiURL = apiEndPoint + apiParams
+    console.log(apiURL);
+    await fetch(apiURL, requestOptions)
+        .then(response => response.text())
+        .then(result => JSON.parse(result))
+        .then(raw => {setLoading(false);
+        if(raw.result === "Success") {
+        setMessageResult("Your purchase was successful");
+        } else {
+        setMessageResult("Your purchase was not successful");
+        }
+        setResults(true);}
+        )
+        .catch(error => console.log('error', error));
+
+  
     } else {
         console.log('Form is not valid'); // This need to be modfied
     }

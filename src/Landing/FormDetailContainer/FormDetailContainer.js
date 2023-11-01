@@ -1,7 +1,7 @@
 import React from "react";
 
 import Input from "../../utils/FormElements/Input";
-import { VALIDATOR_EMAIL, VALIDATOR_PHONE, VALIDATOR_NUMBERONLY } from "../../utils/Validator/Validator"; 
+import { VALIDATOR_EMAIL } from "../../utils/Validator/Validator"; 
 import { useForm } from '../../utils/hooks/form-hook';
 import { useHistory } from 'react-router-dom'; 
 import './FormDetailContainer.css';
@@ -71,6 +71,7 @@ const FormDetailContainer = () => {
                     onInput={inputHandler}
                     handleOnChange={handleOnChange}
                 />  
+
                 <InputPhone 
                     id="phone"
                     name="phone"

@@ -1,5 +1,6 @@
 async function clicks(params) {
 
+
 console.log(params);
     if (params.length = 3) {
         var endpoint = `clicksimport.php?affiliateID=${params.affid}`+
@@ -26,3 +27,4 @@ console.log(params);
     }
     
     export default clicks;
+

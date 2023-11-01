@@ -144,7 +144,7 @@ const handleChange = (e) => {
       </div>
       <label>
         CVV:
-
+        </label>
         <Input 
             id="cvv"
             type="text"
@@ -156,7 +156,6 @@ const handleChange = (e) => {
             handleOnChange={handleOnChange}
         />  
 
-      </label>
       <label>
         Address 1:
         <input type="text" placeholder='Address 1' name='Address1' value={formData.Address1} onChange={(e) => handleChange(e)} />

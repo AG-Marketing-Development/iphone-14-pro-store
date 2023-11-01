@@ -76,6 +76,8 @@ const handleSubmit = async (e) => {
             dataType: "jsonp"
         };
         
+        console.log(formData.expiryDate.month);
+        console.log(formData.expiryDate.month);
         const adrNoSpaces = formData.Address1.replace(/\s+/g, '+');
         const adrNoSpacesTwo = formData.Address2.replace(/\s+/g, '+');
         const cityNoSpaces = formData.city.replace(/\s+/g, '+');

@@ -4,8 +4,32 @@ import './formstyle.css';
 import states from '../../utils/states'
 import clicks from '../../utils/clicksImport'
 import LoadingSimple from '../Loading/loading'
+import Input from '../../utils/FormElements/Input';
+import { useForm } from '../../utils/hooks/form-hook';
+import { VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH, VALIDATOR_NUMBERONLY } from '../../utils/Validator/Validator';
+
 
 const CreditCardForm = params => {
+
+  const [formState, inputHandler] = useForm(
+    {
+        creditCardNumber: {
+            value: '',
+            isValid: false
+        }
+    }, 
+    false
+);
+
+const [inputValues, setInputValues] = useState({
+    creditCardNumber: ''
+  });
+
+const handleOnChange = (e) => {
+
+    let { name, value } = e.target;
+      setInputValues({ ...inputValues, [name]: value });
+};
 
 const [results,setResults] = useState(false);
 const [messageResult,setMessageResult] = useState("No Results");
@@ -92,8 +116,18 @@ const handleChange = (e) => {
     <form className="form-containerd" onSubmit={handleSubmit}>
       <label>
         Credit Card Number:
-        <input type="text" placeholder='xxxxxxxxxxxxx'name='cardNumber' value={formData.cardNumber} onChange={(e) => handleChange(e)} />
-      </label>
+        </label>
+        <Input 
+            id="cardNumber"
+            type="text"
+            name="cardNumber"
+            placeholder="xxxx xxxx xxxx xxxx"
+            validators={[VALIDATOR_MINLENGTH(16), VALIDATOR_MAXLENGTH(16), VALIDATOR_NUMBERONLY()]}
+            errorText="Please enter a valid credit card."
+            onInput={inputHandler}
+            handleOnChange={handleOnChange}
+        />  
+
       <div className="form-double-column">
       <label>
         Month:
@@ -106,7 +140,18 @@ const handleChange = (e) => {
       </div>
       <label>
         CVV:
-        <input type="text" placeholder='XXX' name='cvv' value={formData.cvv} onChange={(e) => handleChange(e)} />
+
+        <Input 
+            id="cvv"
+            type="text"
+            name="cvv"
+            placeholder="xxx"
+            validators={[VALIDATOR_MINLENGTH(3), VALIDATOR_MAXLENGTH(3), VALIDATOR_NUMBERONLY()]}
+            errorText="Please enter a cvv."
+            onInput={inputHandler}
+            handleOnChange={handleOnChange}
+        />  
+
       </label>
       <label>
         Address 1:

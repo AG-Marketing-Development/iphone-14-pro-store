@@ -69,6 +69,7 @@ const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
 
+
     if (formState.isValid) {
         var raw = "";
     var requestOptions = {
@@ -114,6 +115,8 @@ const handleSubmit = async (e) => {
         setResults(true);}
         )
         .catch(error => console.log('error', error));
+
+  
     } else {
         console.log('Form is not valid'); // This need to be modfied
     }
@@ -176,7 +179,7 @@ const validateExpiryDate = ({ month, year }) => {
             expiryDate={formState.inputs.expiryDate.value}
             onExpiryChange={handleExpiryChange}
         />
-        
+
       </div>
       <label>
         CVV:

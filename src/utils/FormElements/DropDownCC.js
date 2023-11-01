@@ -67,7 +67,7 @@ const DropDownCC = ({ expiryDate, onExpiryChange }) => {
       <div className="dropdown-cc-container">
       <label>Month</label>
         <select name="expiryMonth" value={localExpiry.month} onChange={handleMonthChange} className="dropdown-cc">
-          <option value="">MM</option>
+          <option value="month">MM</option>
           {monthOptions.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -79,7 +79,7 @@ const DropDownCC = ({ expiryDate, onExpiryChange }) => {
       <div className="dropdown-cc-container">
       <label>Year</label>
         <select name="expiryYear" value={localExpiry.year} onChange={handleYearChange} className="dropdown-cc">
-          <option value="">YYYY</option>
+          <option value="year">YYYY</option>
           {yearOptions.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}

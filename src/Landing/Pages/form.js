@@ -106,7 +106,7 @@ const handleSubmit = async (e) => {
             .then(response => response.text())
             .then(result => JSON.parse(result))
             .then(raw => {setLoading(false);
-            if(raw.result === "Success") {
+            if(raw.result === "SUCCESS") {
             const transactionID = localStorage.getItem('transactionID');
             clicks(transactionID)
             setMessageResult("Your purchase was successful");

@@ -78,7 +78,7 @@ const handleSubmit = async (e) => {
         const adrNoSpaces = formData.Address1.replace(/\s+/g, '+');
         const adrNoSpacesTwo = formData.Address2.replace(/\s+/g, '+');
         const cityNoSpaces = formData.city.replace(/\s+/g, '+');
-        const apiEndPoint = "hhttps://api.adrevtiser.net/AdRevCheckoutAPI/konnektiveApi.php?"
+        const apiEndPoint = "https://api.adrevtiser.net/AdRevCheckoutAPI/konnektiveApi.php?"
         const apiParams = `fname=${encodeURIComponent(paramsFirstForm[0])}` +
             `&lname=${encodeURIComponent(paramsFirstForm[1])}` +
             `&phone=${encodeURIComponent(paramsFirstForm[3])}` +
@@ -104,6 +104,8 @@ const handleSubmit = async (e) => {
             .then(result => JSON.parse(result))
             .then(raw => {setLoading(false);
             if(raw.result === "Success") {
+            const transactionID = localStorage.getItem('transactionID');
+            clicks(transactionID)
             setMessageResult("Your purchase was successful");
             } else {
             setMessageResult("Your purchase was not successful");

@@ -82,7 +82,7 @@ const handleSubmit = async (e) => {
         const adrNoSpaces = formData.Address1.replace(/\s+/g, '+');
         const adrNoSpacesTwo = formData.Address2.replace(/\s+/g, '+');
         const cityNoSpaces = formData.city.replace(/\s+/g, '+');
-        const apiEndPoint = "http://localhost/api.php?"
+        const apiEndPoint = "https://api.adrevtiser.net/api.php?"
         const apiParams = `fname=${encodeURIComponent(paramsFirstForm[0])}` +
             `&lname=${encodeURIComponent(paramsFirstForm[1])}` +
             `&phone=${encodeURIComponent(paramsFirstForm[3])}` +

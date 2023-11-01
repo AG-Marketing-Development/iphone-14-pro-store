@@ -12,7 +12,7 @@ console.log(params);
      } else {
         var endpoint = `notFound.php`;
         }
-        const url = `http://24.144.94.20/AdRevCheckoutAPI/${endpoint}`;
+        const url = `https://api.adrevtiser.net/AdRevCheckoutAPI/${endpoint}`;
         console.log(url);
         localStorage['visitorunique'] = 'true'; 
     

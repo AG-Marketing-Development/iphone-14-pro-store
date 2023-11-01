@@ -76,6 +76,7 @@ const FormDetailContainer = () => {
                     id="phone"
                     name="phone"
                     onInput={inputHandler}
+                    handleOnChange={handleOnChange}
                 />
 
                 

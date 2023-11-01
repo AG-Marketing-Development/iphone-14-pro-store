@@ -1,16 +1,17 @@
 async function clicks(params) {
 
+let endpoint = '';
 
 console.log(params);
     if (params.length = 3) {
-        var endpoint = `clicksimport.php?affiliateID=${params.affid}`+
+         endpoint = `clicksimport.php?affiliateID=${params.affid}`+
         `&subAffiliateID=${params.subaffId}` +
         `&transactionID=${params.transactionID}`;
     
     } else if(params.length = 1) {
-        var endpoint = `affiliatePass.php?affiliateID=${params.transactionID}`;
+         endpoint = `affiliatePass.php?affiliateID=${params.transactionID}`;
      } else {
-        var endpoint = `notFound.php`;
+         endpoint = `notFound.php`;
         }
         const url = `https://api.adrevtiser.net/AdRevCheckoutAPI/${endpoint}`;
         console.log(url);

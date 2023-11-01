@@ -3,12 +3,13 @@ async function clicks(params) {
 let endpoint = '';
 
 console.log(params);
-    if (params.length == 3) {
+console.log (params.length);
+    if (params.length === 3) {
          endpoint = `clicksimport.php?affiliateID=${params.affid}`+
         `&subAffiliateID=${params.subaffId}` +
         `&transactionID=${params.transactionID}`;
     
-    } else if(params.length == 1) {
+    } else if(params.length === 1) {
          endpoint = `affiliatePass.php?affiliateID=${params.transactionID}`;
      } else {
          endpoint = `notFound.php`;

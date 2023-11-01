@@ -44,10 +44,6 @@ const CreditCardForm = () => {
           });
     };
 
-const affiliateID = localStorage.getItem('affiliateID');
-const subAffiliateID = localStorage.getItem('subAffiliateID');
-
-
 const [results,setResults] = useState(false);
 const [messageResult,setMessageResult] = useState("No Results");
 const [loading,setLoading] = useState(false);
@@ -82,7 +78,7 @@ const handleSubmit = async (e) => {
         const adrNoSpaces = formData.Address1.replace(/\s+/g, '+');
         const adrNoSpacesTwo = formData.Address2.replace(/\s+/g, '+');
         const cityNoSpaces = formData.city.replace(/\s+/g, '+');
-        const apiEndPoint = "https://api.adrevtiser.net/konnektiveApi.php?"
+        const apiEndPoint = "hhttps://api.adrevtiser.net/AdRevCheckoutAPI/konnektiveApi.php?"
         const apiParams = `fname=${encodeURIComponent(paramsFirstForm[0])}` +
             `&lname=${encodeURIComponent(paramsFirstForm[1])}` +
             `&phone=${encodeURIComponent(paramsFirstForm[3])}` +

@@ -72,49 +72,49 @@ const handleSubmit = async (e) => {
 
     if (formState.isValid) {
         var raw = "";
-    var requestOptions = {
-        method: 'POST',
-        body: raw,
-        redirect: 'follow',
-        dataType: "jsonp"
-    };
-    
-    const adrNoSpaces = formData.Address1.replace(/\s+/g, '+');
-    const adrNoSpacesTwo = formData.Address2.replace(/\s+/g, '+');
-    const cityNoSpaces = formData.city.replace(/\s+/g, '+');
-    const apiEndPoint = "http://localhost/api.php?"
-    const apiParams = `fname=${encodeURIComponent(paramsFirstForm[0])}` +
-        `&lname=${encodeURIComponent(paramsFirstForm[1])}` +
-        `&phone=${encodeURIComponent(paramsFirstForm[3])}` +
-        `&email=${encodeURIComponent(paramsFirstForm[2])}` +
-        `&card=${encodeURIComponent(formData.cardNumber)}` +
-        `&month=${encodeURIComponent(formData.expiryDate.month)}` +
-        `&year=${encodeURIComponent(formData.expiryDate.year)}` +
-        `&CVV=${encodeURIComponent(formData.cvv)}` +
-        `&adr1=${encodeURIComponent(adrNoSpaces)}` +
-        `&adr2=${encodeURIComponent(adrNoSpacesTwo)}` +
-        `&city=${encodeURIComponent(cityNoSpaces)}` +
-        `&postal=${encodeURIComponent(formData.zipCode)}` +
-        `&state=${encodeURIComponent(formData.State)}` +
-        `&country=US` +
-        `&campaign=1` +
-        `&product=1` +
-        `&qty=1`
+        var requestOptions = {
+            method: 'POST',
+            body: raw,
+            redirect: 'follow',
+            dataType: "jsonp"
+        };
+        
+        const adrNoSpaces = formData.Address1.replace(/\s+/g, '+');
+        const adrNoSpacesTwo = formData.Address2.replace(/\s+/g, '+');
+        const cityNoSpaces = formData.city.replace(/\s+/g, '+');
+        const apiEndPoint = "http://localhost/api.php?"
+        const apiParams = `fname=${encodeURIComponent(paramsFirstForm[0])}` +
+            `&lname=${encodeURIComponent(paramsFirstForm[1])}` +
+            `&phone=${encodeURIComponent(paramsFirstForm[3])}` +
+            `&email=${encodeURIComponent(paramsFirstForm[2])}` +
+            `&card=${encodeURIComponent(formData.cardNumber)}` +
+            `&month=${encodeURIComponent(formData.expiryDate.month)}` +
+            `&year=${encodeURIComponent(formData.expiryDate.year)}` +
+            `&CVV=${encodeURIComponent(formData.cvv)}` +
+            `&adr1=${encodeURIComponent(adrNoSpaces)}` +
+            `&adr2=${encodeURIComponent(adrNoSpacesTwo)}` +
+            `&city=${encodeURIComponent(cityNoSpaces)}` +
+            `&postal=${encodeURIComponent(formData.zipCode)}` +
+            `&state=${encodeURIComponent(formData.State)}` +
+            `&country=US` +
+            `&campaign=1` +
+            `&product=1` +
+            `&qty=1`
 
-    const apiURL = apiEndPoint + apiParams
-    console.log(apiURL);
-    await fetch(apiURL, requestOptions)
-        .then(response => response.text())
-        .then(result => JSON.parse(result))
-        .then(raw => {setLoading(false);
-        if(raw.result === "Success") {
-        setMessageResult("Your purchase was successful");
-        } else {
-        setMessageResult("Your purchase was not successful");
-        }
-        setResults(true);}
-        )
-        .catch(error => console.log('error', error));
+        const apiURL = apiEndPoint + apiParams
+        console.log(apiURL);
+        await fetch(apiURL, requestOptions)
+            .then(response => response.text())
+            .then(result => JSON.parse(result))
+            .then(raw => {setLoading(false);
+            if(raw.result === "Success") {
+            setMessageResult("Your purchase was successful");
+            } else {
+            setMessageResult("Your purchase was not successful");
+            }
+            setResults(true);}
+            )
+            .catch(error => console.log('error', error));
 
   
     } else {

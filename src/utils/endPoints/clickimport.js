@@ -1,26 +1,28 @@
 async function clicks(params) {
 
-
+console.log(params);
     if (params.length = 3) {
-        let endpoint = `clicksimport.php?affiliateID=${params[0]}`+
-        `&subaffiliateID=${paramsFirstForm[1]}` +
-        `&transactionID=${paramsFirstForm[2]}`
+        var endpoint = `clicksimport.php?affiliateID=${params.affid}`+
+        `&subAffiliateID=${params.subaffId}` +
+        `&transactionID=${params.transactionID}`;
     
     } else if(params.length = 1) {
-        let endpoint = `clicksimport.php?affiliateID=${params[0]}`;
+        var endpoint = `affiliatePass.php?affiliateID=${params.transactionID}`;
      } else {
-        let endpoint = `notFound.php`;
+        var endpoint = `notFound.php`;
         }
-        const url = `http://24.144.94.20/${endpoint}`;
+        const url = `http://24.144.94.20/AdRevCheckoutAPI/${endpoint}`;
+        console.log(url);
         localStorage['visitorunique'] = 'true'; 
     
         try {
             const response = await fetch(url);
-            const data = await response.json();
+            const data = await response.text();
+            console.log(data);
             return data;
         } catch (error) {
             console.error(error);
         }
     }
     
-    export default { clicks };
+    export default clicks;

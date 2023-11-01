@@ -7,7 +7,7 @@ import IphoneSpecification from '../IphoneSpecification/IphoneSpecification'
 import './Landing.css'
 
 const Landing = () => {
-    
+
     const url = new URL(window.location.href);
     const initialParams = url.searchParams;
     const affId = initialParams.get('affiliateID');
@@ -16,9 +16,9 @@ const Landing = () => {
     localStorage['affiliateID'] = affId; 
     localStorage['subAffiliateID'] = subaffId;
     localStorage['transactionID'] = transactionId;
-
-    if (localStorage.getItem('visitorunique')) {
-        clicks(affId,subaffId,transactionId);
+    console.log(localStorage.getItem('visitorunique'));
+    if (localStorage.getItem('visitorunique') === null) {
+        clicks({affid: affId, subaffId: subaffId,transactionID: transactionId});
       }
 
     return(

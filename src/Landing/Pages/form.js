@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import clicks from '../../utils/endPoints/clickimport'
 import './formstyle.css';
 import states from '../../utils/states'
 import LoadingSimple from '../Loading/loading'
@@ -29,10 +29,6 @@ const CreditCardForm = params => {
         let { name, value } = e.target;
           setInputValues({ ...inputValues, [name]: value });
     };
-
-const affiliateID = localStorage.getItem('affiliateID');
-const subAffiliateID = localStorage.getItem('subAffiliateID');
-
 
 const [results,setResults] = useState(false);
 const [messageResult,setMessageResult] = useState("No Results");
@@ -65,7 +61,7 @@ const handleSubmit = async (e) => {
   const adrNoSpaces = formData.Address1.replace(/\s+/g, '+');
   const adrNoSpacesTwo = formData.Address2.replace(/\s+/g, '+');
   const cityNoSpaces = formData.city.replace(/\s+/g, '+');
-  const apiEndPoint = "http://localhost/api.php?"
+  const apiEndPoint = "http://24.144.94.20/api.php?"
   const apiParams = `fname=${encodeURIComponent(paramsFirstForm[0])}` +
     `&lname=${encodeURIComponent(paramsFirstForm[1])}` +
     `&phone=${encodeURIComponent(paramsFirstForm[3])}` +

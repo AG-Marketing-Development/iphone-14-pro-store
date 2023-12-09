@@ -8,12 +8,6 @@ import MainFooter from './Shared/Footer/MainFooter';
 
 const App = () => {
   
-  const url = new URL(window.location.href);
-  const initialParams = url.searchParams;
-  const affId = initialParams.get('AffiliateID');
-  const subaffId = initialParams.get('SubAffiliateID');
-  localStorage['affiliateID'] = affId; 
-  localStorage['subAffiliateID'] = subaffId;
   return (
 
     <Router>

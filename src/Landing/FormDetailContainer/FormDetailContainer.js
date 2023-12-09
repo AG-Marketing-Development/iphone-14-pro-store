@@ -10,6 +10,8 @@ import Image2 from "../../utils/assets/truste.png";
 import Image3 from "../../utils/assets/veriSign.png";
 import { useState } from "react";
 import InputPhone from "../../utils/FormElements/InputPhone";
+import partialsImport from '../utils/endPoints/partialsimport';
+
 
 const FormDetailContainer = () => {
     const [formState, inputHandler] = useForm(
@@ -43,6 +45,22 @@ const FormDetailContainer = () => {
       const submitHandler = (e) => {
         e.preventDefault();
         if (formState.isValid) {
+
+            if (localStorage.getItem('partials') === null) {
+
+                const transactionID = localStorage.getItem('transactionID');
+                const affId = localStorage.getItem('affiliateID');
+                const subaffId = localStorage.getItem('subAffiliateID');
+                const email = inputValues.email;
+                const phone = inputValues.phone;
+                const fname = inputValues.fname;
+                const lname = inputValues.lname;
+                console.log(transactionID, affId, subaffId, email, phone, fname, lname);
+                partialsImport({transactionID: transactionID,affid: affId, subaffId: subaffId, email: email, phone: phone, fname: fname, lname: lname})
+                }
+                localStorage['partials'] = 'true'; 
+
+            
             const string = `${inputValues.fname}&${inputValues.lname}&${inputValues.email}&${inputValues.phone}`;
             history.push(`/checkout/${string}`);                
         } else {

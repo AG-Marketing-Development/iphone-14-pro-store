@@ -10,7 +10,7 @@ import Image2 from "../../utils/assets/truste.png";
 import Image3 from "../../utils/assets/veriSign.png";
 import { useState } from "react";
 import InputPhone from "../../utils/FormElements/InputPhone";
-import partialsImport from '../utils/endPoints/partialsimport';
+import partialsImport from '../../utils/endPoints/partialsimport';
 
 
 const FormDetailContainer = () => {
@@ -53,7 +53,7 @@ const FormDetailContainer = () => {
                 const subaffId = localStorage.getItem('subAffiliateID');
                 const email = inputValues.email;
                 const phone = inputValues.phone;
-                const fname = inputValues.fname;
+                const fname = inputValues.fname;ru
                 const lname = inputValues.lname;
                 console.log(transactionID, affId, subaffId, email, phone, fname, lname);
                 partialsImport({transactionID: transactionID,affid: affId, subaffId: subaffId, email: email, phone: phone, fname: fname, lname: lname})

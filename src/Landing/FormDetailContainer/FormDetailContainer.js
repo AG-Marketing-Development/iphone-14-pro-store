@@ -53,7 +53,7 @@ const FormDetailContainer = () => {
                 const subaffId = localStorage.getItem('subAffiliateID');
                 const email = inputValues.email;
                 const phone = inputValues.phone;
-                const fname = inputValues.fname;ru
+                const fname = inputValues.fname;
                 const lname = inputValues.lname;
                 console.log(transactionID, affId, subaffId, email, phone, fname, lname);
                 partialsImport({transactionID: transactionID,affid: affId, subaffId: subaffId, email: email, phone: phone, fname: fname, lname: lname})
